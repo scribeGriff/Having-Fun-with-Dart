@@ -67,10 +67,7 @@ class jsonAJAX {
     _poweredBy = new Element.tag("div");
     _poweredBy.id = "poweredBy";
     _feedCont.nodes.add(_poweredBy);
-    _poweredBy.innerHTML =
-        '''
-        <a href='http://www.dartlang.org/'>
-        powered by <span class='dartClass'>Dart</span></a>''';
+    _poweredBy.innerHTML = "<a href='http://www.dartlang.org/'> powered by <span class='dartClass'>Dart</span></a>";
     //Blog feed div:
     _blogOut = new Element.tag("div");
     _blogOut.id = "blogOut";
