@@ -1,10 +1,9 @@
-#import('dart:html');
-#import('dart:json');
-#resource('jsonAJAX.css');
+#import ('dart:html');
+#import ('dart:json');
 
 /*************************************
 * Class TabbedFeedReader             *
-* Dart Editor Build 8370             *
+* Dart Editor Build 12440            *
 * Creates a tabbed panel feed reader *
 **************************************/
 class TabbedFeedReader {
@@ -167,7 +166,7 @@ class TabbedFeedReader {
    * the total entries in the blog feed for the Dart category           *
    **********************************************************************/
   void loadFeed() {
-    XMLHttpRequest tEn = new XMLHttpRequest.get(_feedURLCnt, (jsonRequest) {
+    HttpRequest tEn = new HttpRequest.get(_feedURLCnt, (jsonRequest) {
       var jsonResponse = JSON.parse(jsonRequest.responseText);
       _totalEntries = jsonResponse["data"];
       // Once total entries is known, make AJAX requests to retrieve each.
@@ -184,7 +183,7 @@ class TabbedFeedReader {
    * all entries have been processed, moves on to github feed.          *
    **********************************************************************/
   void _iterateEntries() {
-    XMLHttpRequest xhr;
+    HttpRequest xhr;
     var jsonResponse;
 
     if(_totalEntries > 0) {
@@ -193,12 +192,12 @@ class TabbedFeedReader {
       //Update path based on new value of feed offset value _feedOff.
       _feedURL = "http://www.scribegriff.com/studios/index.php?rest/"
           "blog&f=getPosts&cat_url=Google/Dart&offset=$_feedOff&limit=$_feedLim";
-      xhr = new XMLHttpRequest.get(_feedURL, (jsonRequest) {
+      xhr = new HttpRequest.get(_feedURL, (jsonRequest) {
         try {
           jsonResponse = JSON.parse(jsonRequest.responseText);
           // Valid data, process the response.
           _processResponse(jsonResponse);
-        } catch (var exception) {
+        } catch (exception) {
           print("invalid json: $exception");
           // Invalid data, try the next entry.
           _iterateEntries();
@@ -221,14 +220,11 @@ class TabbedFeedReader {
         "${jsonResponse["data"][0]["url"]}";
     titleHeading.text = "${jsonResponse["data"][0]["title"]}";
     _blogOut.nodes.add(titleHeading);
-    _blogOut.insertAdjacentHTML("beforeend",
-        "${jsonResponse["data"][0]["excerpt"]}");
-    _blogOut.insertAdjacentHTML("beforeend",
-        "<a href='$link'>read full entry</a><br>");
-    _blogOut.insertAdjacentHTML("beforeend",
-        "Entry created ${jsonResponse["data"][0]["creadt"]}<br>");
-    _blogOut.insertAdjacentHTML("beforeend",
-        "Entry modified ${jsonResponse["data"][0]["upddt"]}<br>");
+    //Uncomment the following line to include excerpt from blog post.
+    //_blogOut.addHTML("${jsonResponse["data"][0]["excerpt"]}");
+    _blogOut.addHTML("<a href='$link'>read full entry</a><br>");
+    _blogOut.addHTML("Entry created ${jsonResponse["data"][0]["creadt"]}<br>");
+    _blogOut.addHTML("Entry modified ${jsonResponse["data"][0]["upddt"]}<br>");
     //Finished with this entry, now try to retrieve the next one.
     _iterateEntries();
   }
@@ -243,7 +239,7 @@ class TabbedFeedReader {
    ************************************************************************/
   void _githubFeed() {
     var jsonResponse;
-    XMLHttpRequest githubXHR = new XMLHttpRequest();
+    HttpRequest githubXHR = new HttpRequest();
     //Check if browser understands XHR2.
     if(githubXHR.withCredentials != null) {
       githubXHR.open("GET", _githubURL, true);
@@ -254,14 +250,12 @@ class TabbedFeedReader {
       });
       //Use an error handler on XHR.
       githubXHR.on.error.add((e) {
-        _githubOut.insertAdjacentHTML("beforeend",
-            "There was an error loading this feed.<br>");
+        _githubOut.addHTML("There was an error loading this feed.<br>");
       });
       githubXHR.send(null);
     //No browser support for XHR2.
     } else {
-      _githubOut.insertAdjacentHTML("beforeend",
-          "This browser doesn't appear to support XHR2");
+      _githubOut.addHTML("This browser doesn't appear to support XHR2");
     }
   }
 
@@ -288,20 +282,13 @@ class TabbedFeedReader {
         "class": "reposClass"
       });
       _githubOut.nodes.add(_reposDiv);
-      _reposDiv.insertAdjacentHTML("beforeend",
-          '''
-          <a href='${jsonResponse[i]["owner"]["url"]}'><img src=
-          '${jsonResponse[i]["owner"]["avatar_url"]}'></a>''');
-      _reposDiv.insertAdjacentHTML("beforeend",
-          '''
-          <a href='${jsonResponse[i]["html_url"]}'>
-          ${jsonResponse[i]["description"]}</a><br>''');
-      _reposDiv.insertAdjacentHTML("beforeend",
-          "Coded by ${jsonResponse[i]["owner"]["login"]}<br>");
-      _reposDiv.insertAdjacentHTML("beforeend",
-          "Last updated at ${jsonResponse[i]["updated_at"]}<br>");
-      _reposDiv.insertAdjacentHTML("beforeend",
-          "This repo has ${jsonResponse[i]["watchers"]} watchers<br>");
+      _reposDiv.addHTML("<a href='${jsonResponse[i]["owner"]["url"]}'><img src="
+          "'${jsonResponse[i]["owner"]["avatar_url"]}'></a>");
+      _reposDiv.addHTML("<a href='${jsonResponse[i]["html_url"]}'>"
+          "${jsonResponse[i]["description"]}</a><br>");
+      _reposDiv.addHTML("Coded by ${jsonResponse[i]["owner"]["login"]}<br>");
+      _reposDiv.addHTML("Last updated at ${jsonResponse[i]["updated_at"]}<br>");
+      _reposDiv.addHTML("This repo has ${jsonResponse[i]["watchers"]} watchers<br>");
     }
   }
 }
