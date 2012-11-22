@@ -1,5 +1,5 @@
-#import ('dart:html');
-#import ('dart:json');
+import 'dart:html';
+import 'dart:json';
 
 /*************************************
 * Class TabbedFeedReader             *
@@ -220,11 +220,11 @@ class TabbedFeedReader {
         "${jsonResponse["data"][0]["url"]}";
     titleHeading.text = "${jsonResponse["data"][0]["title"]}";
     _blogOut.nodes.add(titleHeading);
-    //Uncomment the following line to include excerpt from blog post.
-    //_blogOut.addHTML("${jsonResponse["data"][0]["excerpt"]}");
-    _blogOut.addHTML("<a href='$link'>read full entry</a><br>");
-    _blogOut.addHTML("Entry created ${jsonResponse["data"][0]["creadt"]}<br>");
-    _blogOut.addHTML("Entry modified ${jsonResponse["data"][0]["upddt"]}<br>");
+    //Comment the following line to exclude excerpt from blog post.
+    _blogOut.addHtml("${jsonResponse["data"][0]["excerpt"]}");
+    _blogOut.addHtml("<a href='$link'>read full entry</a><br>");
+    _blogOut.addHtml("Entry created ${jsonResponse["data"][0]["creadt"]}<br>");
+    _blogOut.addHtml("Entry modified ${jsonResponse["data"][0]["upddt"]}<br>");
     //Finished with this entry, now try to retrieve the next one.
     _iterateEntries();
   }
@@ -250,12 +250,12 @@ class TabbedFeedReader {
       });
       //Use an error handler on XHR.
       githubXHR.on.error.add((e) {
-        _githubOut.addHTML("There was an error loading this feed.<br>");
+        _githubOut.addHtml("There was an error loading this feed.<br>");
       });
       githubXHR.send(null);
     //No browser support for XHR2.
     } else {
-      _githubOut.addHTML("This browser doesn't appear to support XHR2");
+      _githubOut.addHtml("This browser doesn't appear to support XHR2");
     }
   }
 
@@ -282,13 +282,13 @@ class TabbedFeedReader {
         "class": "reposClass"
       });
       _githubOut.nodes.add(_reposDiv);
-      _reposDiv.addHTML("<a href='${jsonResponse[i]["owner"]["url"]}'><img src="
+      _reposDiv.addHtml("<a href='${jsonResponse[i]["owner"]["url"]}'><img src="
           "'${jsonResponse[i]["owner"]["avatar_url"]}'></a>");
-      _reposDiv.addHTML("<a href='${jsonResponse[i]["html_url"]}'>"
+      _reposDiv.addHtml("<a href='${jsonResponse[i]["html_url"]}'>"
           "${jsonResponse[i]["description"]}</a><br>");
-      _reposDiv.addHTML("Coded by ${jsonResponse[i]["owner"]["login"]}<br>");
-      _reposDiv.addHTML("Last updated at ${jsonResponse[i]["updated_at"]}<br>");
-      _reposDiv.addHTML("This repo has ${jsonResponse[i]["watchers"]} watchers<br>");
+      _reposDiv.addHtml("Coded by ${jsonResponse[i]["owner"]["login"]}<br>");
+      _reposDiv.addHtml("Last updated at ${jsonResponse[i]["updated_at"]}<br>");
+      _reposDiv.addHtml("This repo has ${jsonResponse[i]["watchers"]} watchers<br>");
     }
   }
 }
