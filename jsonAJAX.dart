@@ -33,7 +33,7 @@ class TabbedFeedReader {
   *******************************************************/
   TabbedFeedReader() {
     _feedCont = document.query('#feedContainer');
-    _feedCont.innerHTML = "";
+    _feedCont.innerHtml = "";
 
     /*************************************************************
      * Create tab one 'focus' div and set its name to Blog Feed. *
@@ -44,7 +44,7 @@ class TabbedFeedReader {
       "class": "tab",
       "style": "display:block;"
     });
-    _tabOneFocus.innerHTML = "Blog Feed";
+    _tabOneFocus.innerHtml = "Blog Feed";
     _feedCont.nodes.add(_tabOneFocus);
 
     /*************************************************************
@@ -56,7 +56,7 @@ class TabbedFeedReader {
       "class": "tab",
       "style": "display:none;"
     });
-    _tabOneReady.innerHTML = "Blog Feed";
+    _tabOneReady.innerHtml = "Blog Feed";
     _feedCont.nodes.add(_tabOneReady);
 
     /*****************************************************************
@@ -68,7 +68,7 @@ class TabbedFeedReader {
       "class": "tab",
       "style": "display:none;"
     });
-    _tabTwoFocus.innerHTML = "Repos Watched";
+    _tabTwoFocus.innerHtml = "Repos Watched";
     _feedCont.nodes.add(_tabTwoFocus);
 
     /*****************************************************************
@@ -80,7 +80,7 @@ class TabbedFeedReader {
       "class": "tab",
       "style": "display:block;"
     });
-    _tabTwoReady.innerHTML = "Repos Watched";
+    _tabTwoReady.innerHtml = "Repos Watched";
     _feedCont.nodes.add(_tabTwoReady);
 
     /*******************************************
@@ -89,7 +89,7 @@ class TabbedFeedReader {
     _poweredBy = new Element.tag("div");
     _poweredBy.id = "poweredBy";
     _feedCont.nodes.add(_poweredBy);
-    _poweredBy.innerHTML =
+    _poweredBy.innerHtml =
         "<a href='http://www.dartlang.org/'> powered by <span class='dartClass'>Dart</span></a>";
 
     /****************************************************************
@@ -221,10 +221,10 @@ class TabbedFeedReader {
     titleHeading.text = "${jsonResponse["data"][0]["title"]}";
     _blogOut.nodes.add(titleHeading);
     //Comment the following line to exclude excerpt from blog post.
-    _blogOut.addHtml("${jsonResponse["data"][0]["excerpt"]}");
-    _blogOut.addHtml("<a href='$link'>read full entry</a><br>");
-    _blogOut.addHtml("Entry created ${jsonResponse["data"][0]["creadt"]}<br>");
-    _blogOut.addHtml("Entry modified ${jsonResponse["data"][0]["upddt"]}<br>");
+    _blogOut.appendHtml("${jsonResponse["data"][0]["excerpt"]}");
+    _blogOut.appendHtml("<a href='$link'>read full entry</a><br>");
+    _blogOut.appendHtml("Entry created ${jsonResponse["data"][0]["creadt"]}<br>");
+    _blogOut.appendHtml("Entry modified ${jsonResponse["data"][0]["upddt"]}<br>");
     //Finished with this entry, now try to retrieve the next one.
     _iterateEntries();
   }
@@ -250,12 +250,12 @@ class TabbedFeedReader {
       });
       //Use an error handler on XHR.
       githubXHR.on.error.add((e) {
-        _githubOut.addHtml("There was an error loading this feed.<br>");
+        _githubOut.appendHtml("There was an error loading this feed.<br>");
       });
       githubXHR.send(null);
     //No browser support for XHR2.
     } else {
-      _githubOut.addHtml("This browser doesn't appear to support XHR2");
+      _githubOut.appendHtml("This browser doesn't appear to support XHR2");
     }
   }
 
@@ -282,13 +282,13 @@ class TabbedFeedReader {
         "class": "reposClass"
       });
       _githubOut.nodes.add(_reposDiv);
-      _reposDiv.addHtml("<a href='${jsonResponse[i]["owner"]["url"]}'><img src="
+      _reposDiv.appendHtml("<a href='${jsonResponse[i]["owner"]["url"]}'><img src="
           "'${jsonResponse[i]["owner"]["avatar_url"]}'></a>");
-      _reposDiv.addHtml("<a href='${jsonResponse[i]["html_url"]}'>"
+      _reposDiv.appendHtml("<a href='${jsonResponse[i]["html_url"]}'>"
           "${jsonResponse[i]["description"]}</a><br>");
-      _reposDiv.addHtml("Coded by ${jsonResponse[i]["owner"]["login"]}<br>");
-      _reposDiv.addHtml("Last updated at ${jsonResponse[i]["updated_at"]}<br>");
-      _reposDiv.addHtml("This repo has ${jsonResponse[i]["watchers"]} watchers<br>");
+      _reposDiv.appendHtml("Coded by ${jsonResponse[i]["owner"]["login"]}<br>");
+      _reposDiv.appendHtml("Last updated at ${jsonResponse[i]["updated_at"]}<br>");
+      _reposDiv.appendHtml("This repo has ${jsonResponse[i]["watchers"]} watchers<br>");
     }
   }
 }

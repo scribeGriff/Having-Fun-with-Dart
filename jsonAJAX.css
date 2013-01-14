@@ -3,37 +3,37 @@
   font-weight: bold;
   text-decoration: none;
   outline: none;
-  transition-property: color, text-shadow;  
+  transition-property: color, text-shadow;
   transition-duration: 1s;
-  -moz-transition-property: color, text-shadow;  
-  -moz-transition-duration: 1s; 
-  -webkit-transition-property: color, text-shadow;  
-  -webkit-transition-duration: 1s;  
-  -o-transition-property: color, text-shadow;  
+  -moz-transition-property: color, text-shadow;
+  -moz-transition-duration: 1s;
+  -webkit-transition-property: color, text-shadow;
+  -webkit-transition-duration: 1s;
+  -o-transition-property: color, text-shadow;
   -o-transition-duration: 1s;
   color: #698BBF;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.0);
 }
 #feedContainer a:visited {
-  transition-property: color, text-shadow;  
+  transition-property: color, text-shadow;
   transition-duration: 1s;
-  -moz-transition-property: color, text-shadow;  
-  -moz-transition-duration: 1s; 
-  -webkit-transition-property: color, text-shadow;  
-  -webkit-transition-duration: 1s;  
-  -o-transition-property: color, text-shadow;  
+  -moz-transition-property: color, text-shadow;
+  -moz-transition-duration: 1s;
+  -webkit-transition-property: color, text-shadow;
+  -webkit-transition-duration: 1s;
+  -o-transition-property: color, text-shadow;
   -o-transition-duration: 1s;
   color: #698BBF;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.0);
 }
 #feedContainer a:hover {
-  transition-property: color, text-shadow;  
-  transition-duration: 1s; 
-  -moz-transition-property: color, text-shadow;  
-  -moz-transition-duration: 1s; 
-  -webkit-transition-property: color, text-shadow;  
-  -webkit-transition-duration: 1s;  
-  -o-transition-property: color, text-shadow;  
+  transition-property: color, text-shadow;
+  transition-duration: 1s;
+  -moz-transition-property: color, text-shadow;
+  -moz-transition-duration: 1s;
+  -webkit-transition-property: color, text-shadow;
+  -webkit-transition-duration: 1s;
+  -o-transition-property: color, text-shadow;
   -o-transition-duration: 1s;
   color: #000;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
@@ -48,7 +48,7 @@
   font-family: Tahoma, Geneva, sans-serif;
   font-size: 100%;
   text-align: center;
-  background-image: url(images/tabbedPanelFolderFeed.png), 
+  background-image: url(images/tabbedPanelFolderFeed.png),
       url(images/tabbedPanelFolderFeedFlipped.png);
   background-repeat: no-repeat;
   background-position: center 27px, center bottom;
@@ -92,7 +92,7 @@
   color: #999;
   line-height: 100%;
   margin-bottom: 20px;
-} 
+}
 #feedContainer #poweredBy {
   clear: both;
   text-align: right;
@@ -125,7 +125,7 @@
   background-image: url(images/tabbedPanelTabSelected.png);
   background-repeat: no-repeat;
   background-position: center top;
-  margin-left: 40px;  
+  margin-left: 40px;
   color: #000;
 }
 
@@ -135,26 +135,26 @@
   background-repeat: no-repeat;
   background-position: center top;
   margin-left: 40px;
-  transition-property: color, text-shadow;  
+  transition-property: color, text-shadow;
   transition-duration: 1s;
-  -moz-transition-property: color, text-shadow;  
-  -moz-transition-duration: 1s; 
-  -webkit-transition-property: color, text-shadow;  
-  -webkit-transition-duration: 1s;  
-  -o-transition-property: color, text-shadow;  
+  -moz-transition-property: color, text-shadow;
+  -moz-transition-duration: 1s;
+  -webkit-transition-property: color, text-shadow;
+  -webkit-transition-duration: 1s;
+  -o-transition-property: color, text-shadow;
   -o-transition-duration: 1s;
   color: #556270;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.0);
 }
 #feedContainer #tabOneReady:hover {
   cursor: pointer;
-  transition-property: color, text-shadow;  
-  transition-duration: 1s; 
-  -moz-transition-property: color, text-shadow;  
-  -moz-transition-duration: 1s; 
-  -webkit-transition-property: color, text-shadow;  
-  -webkit-transition-duration: 1s;  
-  -o-transition-property: color, text-shadow;  
+  transition-property: color, text-shadow;
+  transition-duration: 1s;
+  -moz-transition-property: color, text-shadow;
+  -moz-transition-duration: 1s;
+  -webkit-transition-property: color, text-shadow;
+  -webkit-transition-duration: 1s;
+  -o-transition-property: color, text-shadow;
   -o-transition-duration: 1s;
   color: #000;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
@@ -175,27 +175,27 @@
   background-repeat: no-repeat;
   background-position: center top;
   margin-right: 40px;
-  transition-property: color, text-shadow;  
+  transition-property: color, text-shadow;
   transition-duration: 1s;
-  -moz-transition-property: color, text-shadow;  
-  -moz-transition-duration: 1s;  
-  -webkit-transition-property: color, text-shadow;  
-  -webkit-transition-duration: 1s;  
-  -o-transition-property: color, text-shadow;  
-  -o-transition-duration: 1s;  
+  -moz-transition-property: color, text-shadow;
+  -moz-transition-duration: 1s;
+  -webkit-transition-property: color, text-shadow;
+  -webkit-transition-duration: 1s;
+  -o-transition-property: color, text-shadow;
+  -o-transition-duration: 1s;
   color: #556270;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.0);
 }
 #feedContainer #tabTwoReady:hover {
   cursor: pointer;
-  transition-property: color, text-shadow;  
+  transition-property: color, text-shadow;
   transition-duration: 1s;
-  -moz-transition-property: color, text-shadow;  
-  -moz-transition-duration: 1s; 
-  -webkit-transition-property: color, text-shadow;  
-  -webkit-transition-duration: 1s;  
-  -o-transition-property: color, text-shadow;  
-  -o-transition-duration: 1s;  
+  -moz-transition-property: color, text-shadow;
+  -moz-transition-duration: 1s;
+  -webkit-transition-property: color, text-shadow;
+  -webkit-transition-duration: 1s;
+  -o-transition-property: color, text-shadow;
+  -o-transition-duration: 1s;
   color: #000;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
 }
@@ -210,6 +210,7 @@
 	height: 25px;
   }
 #feedContainer #githubOut img {
+  padding:0;
 	max-height:80px;
 	max-width:80px;
 	float: left;
@@ -219,7 +220,7 @@
 	-webkit-box-shadow: 0 8px 6px -6px black;
 	-moz-box-shadow: 0 8px 6px -6px black;
 	box-shadow: 0 8px 6px -6px black;
-	-webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), 
+	-webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent),
 						color-stop(0.75, transparent), to(rgba(255, 255, 255, 0.25)));
 	opacity:0.75;
 	filter:alpha(opacity=75); /* For IE8 and earlier */
@@ -239,27 +240,27 @@
   margin-bottom: 10px;
   font-size: 13px;
   font-variant: small-caps;
-  transition-property: background-color;  
+  transition-property: background-color;
   transition-duration: 0.5s;
-  -moz-transition-property: background-color;  
-  -moz-transition-duration: 1s;  
-  -webkit-transition-property: background-color;  
-  -webkit-transition-duration: 0.5s;  
-  -o-transition-property: background-color;  
-  -o-transition-duration: 0.5s;  
+  -moz-transition-property: background-color;
+  -moz-transition-duration: 1s;
+  -webkit-transition-property: background-color;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-property: background-color;
+  -o-transition-duration: 0.5s;
   background-color: rgba(247, 246, 181, 0.0);
   -moz-border-radius: 15px;
   border-radius: 15px;
 }
 #feedContainer #githubOut .reposClass:hover {
-  transition-property: background-color;  
+  transition-property: background-color;
   transition-duration: 0.5s;
-  -moz-transition-property: background-color;  
-  -moz-transition-duration: 0.5s;  
-  -webkit-transition-property: background-color;  
-  -webkit-transition-duration: 0.5s;  
-  -o-transition-property: background-color;  
-  -o-transition-duration: 1s;  
+  -moz-transition-property: background-color;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-property: background-color;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-property: background-color;
+  -o-transition-duration: 1s;
   background-color: rgba(247, 246, 181, 1.0);
 }
 #feedContainer #githubOut .reposClass a {
