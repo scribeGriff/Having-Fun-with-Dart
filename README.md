@@ -1,16 +1,30 @@
 # A Tabbed Panel Feed Reader in Dart #
 
-Compliant with Dart Editor build 12440  
-4:47 PM Saturday, September 22, 2012  
+Compliant with Dart Editor build 17463 (M3)  
+3:40 PM Wednesday, January 23, 2013 
 Blog entry at [scribeGriff.com/studios](http://www.greatandlittle.com/studios/index.php?post/2012/02/21/Having-Fun-with-Dart-AJAX-and-JSON)  
-Comments: pre-M1 and XHR changes.    
+Comments: M3 revision.    
 Tags: Dart, JSON, AJAX, CORS, XHR, XHR2
 
 ----------
 
 ## Revision History ##
 
-**1.) 22 Sept 2012:** XMLHttpRequest is now HttpRequest in Dart.  
+**1.) 23 Jan 2013:** Includes M2 fixes such as addHtml becoming appendHtml.  Biggest change is import of dart:json library:
+
+    import 'dart:json';
+
+is now:
+
+    import 'dart:json' as JSON;
+
+This is because both parse and stringify are now top level functions.  By importing the library as JSON, we can keep the syntax as:
+
+    JSON.parse(response);
+
+
+
+**2.) 22 Sept 2012:** XMLHttpRequest is now HttpRequest in Dart.  
 Replaced instances of
     
     new XMLHttpRequest.get(_feedURL, (jsonRequest)...
@@ -30,7 +44,7 @@ with:
 
 General pre-M1 changes including removal of #resource and var keyword from try-catch statements. 
 
-**2.) 16 June 2012:** Removed use of '+' string concatenation operator.  
+**3.) 16 June 2012:** Removed use of '+' string concatenation operator.  
 Replaced instances of:
 
     element.innerHTML += 'htmlString';
@@ -39,7 +53,7 @@ with:
 
     element.insertAdjacentHTML('beforeend', 'htmlString');
 
-**2.) 19 May 2012:** Updated to Dart Editor build 7552.
+**4.) 19 May 2012:** Updated to Dart Editor build 7552.
 
     _feedCont = window.document.query('#feedContainer'); 
 became
@@ -52,7 +66,7 @@ is now
 
     xhr = new XMLHttpRequest.get(feedURL, (jsonRequest)
 
-**4.) 21 February 2012:** Initial release with Dart Editor build 4577.
+**5.) 21 February 2012:** Initial release with Dart Editor build 4577.
 
 ----------
 

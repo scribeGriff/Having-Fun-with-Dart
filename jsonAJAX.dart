@@ -1,9 +1,9 @@
 import 'dart:html';
-import 'dart:json';
+import 'dart:json' as JSON;
 
 /*************************************
 * Class TabbedFeedReader             *
-* Dart Editor Build 12440            *
+* Dart Editor Build 17463 (M3)       *
 * Creates a tabbed panel feed reader *
 **************************************/
 class TabbedFeedReader {
