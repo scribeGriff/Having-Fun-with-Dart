@@ -1,9 +1,9 @@
 import 'dart:html';
-import 'dart:json' as JSON;
+import 'dart:json' as json;
 
 /*************************************
 * Class TabbedFeedReader             *
-* Dart Editor Build 17463 (M3)       *
+* Dart Editor Build 18115 (M3)       *
 * Creates a tabbed panel feed reader *
 **************************************/
 class TabbedFeedReader {
@@ -111,12 +111,12 @@ class TabbedFeedReader {
      * changeDisplay() which is passed a display list that control   *
      * the state of the tabbed panel.                                *
      *****************************************************************/
-    _tabOneReady.on.click.add((e) {
+    _tabOneReady.onClick.listen((e) {
       List _displayList = [_tabOneFocus,_tabTwoReady,_blogOut];
       _changeDisplay(_displayList);
     });
 
-    _tabTwoReady.on.click.add((e) {
+    _tabTwoReady.onClick.listen((e) {
       List _displayList = [_tabOneReady,_tabTwoFocus,_githubOut];
       _changeDisplay(_displayList);
     });
@@ -166,8 +166,8 @@ class TabbedFeedReader {
    * the total entries in the blog feed for the Dart category           *
    **********************************************************************/
   void loadFeed() {
-    HttpRequest tEn = new HttpRequest.get(_feedURLCnt, (jsonRequest) {
-      var jsonResponse = JSON.parse(jsonRequest.responseText);
+    HttpRequest.request(_feedURLCnt).then((jsonRequest) {
+      var jsonResponse = json.parse(jsonRequest.responseText);
       _totalEntries = jsonResponse["data"];
       // Once total entries is known, make AJAX requests to retrieve each.
       _iterateEntries();
@@ -183,18 +183,16 @@ class TabbedFeedReader {
    * all entries have been processed, moves on to github feed.          *
    **********************************************************************/
   void _iterateEntries() {
-    HttpRequest xhr;
     var jsonResponse;
-
     if(_totalEntries > 0) {
       _totalEntries--;
       _feedOff++;
       //Update path based on new value of feed offset value _feedOff.
       _feedURL = "http://www.scribegriff.com/studios/index.php?rest/"
           "blog&f=getPosts&cat_url=Google/Dart&offset=$_feedOff&limit=$_feedLim";
-      xhr = new HttpRequest.get(_feedURL, (jsonRequest) {
+      HttpRequest.request(_feedURL).then((jsonRequest) {
         try {
-          jsonResponse = JSON.parse(jsonRequest.responseText);
+          jsonResponse = json.parse(jsonRequest.responseText);
           // Valid data, process the response.
           _processResponse(jsonResponse);
         } catch (exception) {
@@ -243,13 +241,13 @@ class TabbedFeedReader {
     //Check if browser understands XHR2.
     if(githubXHR.withCredentials != null) {
       githubXHR.open("GET", _githubURL, true);
-      githubXHR.on.load.add((e) {
-        jsonResponse = JSON.parse(githubXHR.responseText);
+      githubXHR.onLoad.listen((e) {
+        jsonResponse = json.parse(githubXHR.responseText);
         //Have the JSON data, now to process it.
         _processGits(jsonResponse);
       });
       //Use an error handler on XHR.
-      githubXHR.on.error.add((e) {
+      githubXHR.onError.listen((e) {
         _githubOut.appendHtml("There was an error loading this feed.<br>");
       });
       githubXHR.send(null);
@@ -266,7 +264,7 @@ class TabbedFeedReader {
    ************************************************************************/
   void _processGits(var jsonResponse) {
     //Make a note of when we retrieved the data.
-    Date creationTime = new Date.now();
+    DateTime creationTime = new DateTime.now();
     HeadingElement titleHeading = new Element.tag("h2");
     titleHeading.text =
         "$_githubUser is watching ${jsonResponse.length} repositories:";

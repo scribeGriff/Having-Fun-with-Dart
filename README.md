@@ -1,6 +1,6 @@
 # A Tabbed Panel Feed Reader in Dart #
 
-Compliant with Dart Editor build 17463 (M3)  
+Compliant with Dart Editor build 18115 (M3)  
 3:40 PM Wednesday, January 23, 2013 
 Blog entry at [scribeGriff.com/studios](http://www.greatandlittle.com/studios/index.php?post/2012/02/21/Having-Fun-with-Dart-AJAX-and-JSON)  
 Comments: M3 revision.    
@@ -14,13 +14,21 @@ Tags: Dart, JSON, AJAX, CORS, XHR, XHR2
 
     import 'dart:json';
 
+is now (lower case is recommended for prefixes):
+
+    import 'dart:json' as json;
+
+This is because both parse and stringify are now top level functions.  By importing the library as json, we can keep the syntax as:
+
+    json.parse(response);
+
+Some of the code is also now using static methods that return futures for the HttpRequest (expect more updates related to this).  So:
+
+    new XMLHttpRequest.get(_feedURL, (jsonRequest)...
+
 is now:
 
-    import 'dart:json' as JSON;
-
-This is because both parse and stringify are now top level functions.  By importing the library as JSON, we can keep the syntax as:
-
-    JSON.parse(response);
+    HttpRequest.request(_feedURL).then((jsonRequest)...
 
 
 
