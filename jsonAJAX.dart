@@ -240,7 +240,7 @@ class TabbedFeedReader {
     HttpRequest githubXHR = new HttpRequest();
     //Check if browser understands XHR2.
     if(githubXHR.withCredentials != null) {
-      githubXHR.open("GET", _githubURL, true);
+      githubXHR.open("GET", _githubURL, async:true);
       githubXHR.onLoad.listen((e) {
         jsonResponse = json.parse(githubXHR.responseText);
         //Have the JSON data, now to process it.
