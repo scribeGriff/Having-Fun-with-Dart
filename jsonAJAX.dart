@@ -1,11 +1,16 @@
-import 'dart:html';
-import 'dart:json' as json;
+// Copyright (c) 2013, scribeGriff (Richard Griffith)
+// https://github.com/scribeGriff/Having-Fun-with-Dart
+// All rights reserved.  Please see the LICENSE.md file.
 
-/*************************************
-* Class TabbedFeedReader             *
-* Dart Editor Build 18115 (M3)       *
-* Creates a tabbed panel feed reader *
-**************************************/
+import 'dart:html';
+import 'dart:convert';
+
+/**
+* Class TabbedFeedReader
+*
+* Creates a tabbed panel feed reader.
+*/
+
 class TabbedFeedReader {
   // Div elements
   DivElement _output;
@@ -167,7 +172,7 @@ class TabbedFeedReader {
    **********************************************************************/
   void loadFeed() {
     HttpRequest.request(_feedURLCnt).then((jsonRequest) {
-      var jsonResponse = json.parse(jsonRequest.responseText);
+      var jsonResponse = JSON.decode(jsonRequest.responseText);
       _totalEntries = jsonResponse["data"];
       // Once total entries is known, make AJAX requests to retrieve each.
       _iterateEntries();
@@ -192,7 +197,7 @@ class TabbedFeedReader {
           "blog&f=getPosts&cat_url=Google/Dart&offset=$_feedOff&limit=$_feedLim";
       HttpRequest.request(_feedURL).then((jsonRequest) {
         try {
-          jsonResponse = json.parse(jsonRequest.responseText);
+          jsonResponse = JSON.decode(jsonRequest.responseText);
           // Valid data, process the response.
           _processResponse(jsonResponse);
         } catch (exception) {
@@ -242,7 +247,7 @@ class TabbedFeedReader {
     if(githubXHR.withCredentials != null) {
       githubXHR.open("GET", _githubURL, async:true);
       githubXHR.onLoad.listen((e) {
-        jsonResponse = json.parse(githubXHR.responseText);
+        jsonResponse = JSON.decode(githubXHR.responseText);
         //Have the JSON data, now to process it.
         _processGits(jsonResponse);
       });
